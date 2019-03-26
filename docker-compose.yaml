@@ -1,0 +1,19 @@
+version: '3.4'
+services:
+  php:
+    build: 
+      context: .
+      dockerfile: ./Dockerfile
+    working_dir: /working_dir
+    entrypoint: php
+    command: ['-f', '/working_dir/index.php']
+    volumes:
+      - ./src:/working_dir
+  composer:
+    build: 
+      context: .
+      dockerfile: ./Dockerfile
+    working_dir: /working_dir
+    entrypoint: composer
+    volumes:
+      - ./src:/working_dir

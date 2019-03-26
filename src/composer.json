@@ -1,0 +1,14 @@
+{
+    "name": "freightpath/purolator-soap-api-test",
+    "description": "Test of the Purolator SOAP API",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Dan Imbrogno",
+            "email": "dan@pmlfreight.tech"
+        }
+    ],
+    "require": {
+        "vlucas/phpdotenv": "^3.3"
+    }
+}
