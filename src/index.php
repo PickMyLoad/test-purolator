@@ -24,6 +24,7 @@ define("PRODUCTION_PASS", $_ENV['PRODUCTION_PASS']);
 //Define the Billing account and the account that is registered with PWS
 define("BILLING_ACCOUNT", $_ENV['BILLING_ACCOUNT']);
 define("REGISTERED_ACCOUNT", $_ENV['REGISTERED_ACCOUNT']);
+define("USER_TOKEN", $_ENV['USER_TOKEN']);
 
 
 echo PRODUCTION_KEY. ' '.PRODUCTION_PASS.' '.BILLING_ACCOUNT.' '.REGISTERED_ACCOUNT;
@@ -51,7 +52,8 @@ function createPWSSOAPClient()
                                         'Version'           =>  '1.0',
                                         'Language'          =>  'en',
                                         'GroupID'           =>  'xxx',
-                                        'RequestReference'  =>  'Freight Shipping Example'
+                                        'RequestReference'  =>  'Freight Shipping Example',
+                                        'UserToken'         => USER_TOKEN
                                       )
                               );
   //Apply the SOAP Header to your client
@@ -174,7 +176,7 @@ $request->Shipment->AlertInformation->AlertDetails->AlertDetail->Type="POD";
 //Execute the request and capture the response
 $response = $client->CreateShipment($request);
 
-print $request;
+var_dump($request);
 
 print "<pre>\n";
 print "Request :\n".htmlspecialchars($client->__getLastRequest()) ."\n";
