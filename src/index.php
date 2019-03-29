@@ -49,9 +49,9 @@ function createPWSSOAPClient()
   $headers[] = new SoapHeader ( 'http://purolator.com/pws/datatypes/v1',
                                 'RequestContext',
                                 array (
-                                        'Version'           =>  '1.0',
+                                        'Version'           =>  '1.1',
                                         'Language'          =>  'en',
-                                        'GroupID'           =>  'xxx',
+                                        'GroupID'           =>  'aaa',
                                         'RequestReference'  =>  'Freight Shipping Example',
                                         'UserToken'         => USER_TOKEN
                                       )
@@ -120,7 +120,7 @@ $request->Shipment->PaymentInformation->PaymentType = "Sender";
 
 
 $request->Shipment->ShipmentDetails->ServiceTypeCode="1";
-$request->Shipment->ShipmentDetails->ShipmentDate = "YOUR SHIPMENT DATE";
+$request->Shipment->ShipmentDetails->ShipmentDate = "2019-04-09";
 
 $request->Shipment->ShipmentDetails->DeclaredValue="1";
 $request->Shipment->ShipmentDetails->SpecialInstructions="TEST";
@@ -150,14 +150,14 @@ $request->Shipment->ShipmentDetails->CustomerReferences->CustomerReference->Sequ
 
 
 $request->Shipment->AppointmentFlag = "true";
-$request->Shipment->AppointmentDate="2015-03-12";
+$request->Shipment->AppointmentDate="2019-04-05";
 $request->Shipment->AppointmentStartTime="1200";
-$request->Shipment->AppointmentEndTime="1700";
+$request->Shipment->AppointmentEndTime="1800";
 
 $request->Shipment->PickupFlag="true";
 
 //$request->PickUpInformation->PickupDate="YOUR PICKUP DATE";
-$request->Shipment->PickupInformation->PickupDate="2015-03-11";
+$request->Shipment->PickupInformation->PickupDate="2019-04-04";
 $request->Shipment->PickupInformation->ReadyTime="12:00";
 $request->Shipment->PickupInformation->CloseTime="18:00";
 
@@ -176,7 +176,9 @@ $request->Shipment->AlertInformation->AlertDetails->AlertDetail->Type="POD";
 //Execute the request and capture the response
 $response = $client->CreateShipment($request);
 
-var_dump($request);
+var_dump($client->__getLastRequestHeaders());
+
+// var_dump($request);
 
 print "<pre>\n";
 print "Request :\n".htmlspecialchars($client->__getLastRequest()) ."\n";
